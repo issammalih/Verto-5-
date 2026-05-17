@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Verto Media Global — Digital Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+:root{
+  --bg:#04030e;--s1:#080618;--s2:#0f0d28;
+  --p:#8b5cf6;--p2:#a78bfa;--p3:#c4b5fd;
+  --c:#38bdf8;--pk:#f472b6;
+  --gp:rgba(139,92,246,.3);--gc:rgba(56,189,248,.2);
+  --br:rgba(255,255,255,.06);--card:rgba(255,255,255,.03);
+  --t:rgba(255,255,255,.9);--t2:rgba(255,255,255,.45);--t3:rgba(255,255,255,.18);
+  --f:'Inter',sans-serif;--r:16px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:var(--f);overflow-x:hidden;font-size:15px;line-height:1.6}
+
+/* ── CANVAS ── */
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ── NOISE ── */
+body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='.035'/%3E%3C/svg%3E");
+  opacity:.6}
+
+/* ── GRID ── */
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(rgba(139,92,246,.04) 1px,transparent 1px),
+             linear-gradient(90deg,rgba(139,92,246,.04) 1px,transparent 1px);
+  background-size:70px 70px}
+
+.page{position:relative;z-index:2}
+.ct{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ═══════════════════════ NAV ═══════════════════════ */
+nav{
+  position:fixed;top:14px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 28px);max-width:1080px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 18px;z-index:999;
+  background:rgba(4,3,14,.7);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid var(--br);border-radius:100px;
+}
+.nlogo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.nlogo img{height:30px;filter:drop-shadow(0 0 10px rgba(139,92,246,.7))}
+.nbr{line-height:1.1}
+.nbn{font-size:12px;font-weight:700;color:#fff;white-space:nowrap}
+.nbs{font-size:9px;color:var(--t2);letter-spacing:.04em}
+.nl{display:flex;gap:2px;list-style:none}
+.nl a{color:var(--t2);font-size:12px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:100px;transition:.2s}
+.nl a:hover{color:#fff;background:var(--card)}
+.nr{display:flex;align-items:center;gap:8px}
+.ls{display:flex;background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:100px;padding:3px}
+.lb{padding:4px 11px;border:none;border-radius:100px;background:transparent;color:var(--t2);font-family:var(--f);font-size:11px;font-weight:700;cursor:pointer;transition:.2s}
+.lb.on{background:var(--p);color:#fff}
+.bnav{padding:8px 18px;background:var(--p);color:#fff;border:none;border-radius:100px;font-family:var(--f);font-size:12px;font-weight:600;cursor:pointer;transition:.25s;box-shadow:0 0 20px var(--gp);white-space:nowrap}
+.bnav:hover{background:var(--p2);transform:translateY(-1px)}
+.hbg{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:5px}
+.hbg span{display:block;width:20px;height:2px;background:var(--t);border-radius:2px;transition:.3s}
+.hbg.o span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hbg.o span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hbg.o span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mob{display:none;position:fixed;inset:0;background:rgba(4,3,14,.97);backdrop-filter:blur(20px);
+  z-index:998;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+.mob.o{display:flex}
+.mob a,.mob .mbb{color:#fff;font-size:20px;font-weight:700;text-decoration:none;background:none;border:none;cursor:pointer;font-family:var(--f);transition:.2s}
+.mob a:hover,.mob .mbb:hover{color:var(--p2)}
+
+/* ═══════════════════════ HERO ═══════════════════════ */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 20px 70px;position:relative}
+
+.badge{display:inline-flex;align-items:center;gap:7px;padding:5px 16px;border-radius:100px;
+  background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);
+  font-size:11px;font-weight:600;color:var(--p3);letter-spacing:.04em;
+  margin-bottom:24px;animation:fu .7s cubic-bezier(.34,1.56,.64,1) both}
+.badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--p3);animation:bl 2s infinite}
+@keyframes bl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.6)}}
+
+.hero h1{font-size:clamp(40px,9vw,96px);font-weight:900;line-height:.98;
+  letter-spacing:-.04em;max-width:820px;
+  animation:fu .8s .08s cubic-bezier(.34,1.56,.64,1) both}
+.grad{background:linear-gradient(125deg,var(--p2) 0%,var(--c) 45%,var(--pk) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:inline-block}
+
+.hero-p{font-size:15px;color:var(--t2);max-width:460px;margin:20px auto 32px;line-height:1.75;
+  animation:fu .8s .16s cubic-bezier(.34,1.56,.64,1) both}
+
+.hbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  animation:fu .8s .24s cubic-bezier(.34,1.56,.64,1) both}
+.bp{padding:13px 28px;background:var(--p);color:#fff;border:none;border-radius:100px;
+  font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer;
+  box-shadow:0 0 28px var(--gp);transition:.25s;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.bp:hover{background:var(--p2);transform:translateY(-2px);box-shadow:0 0 40px var(--gp)}
+.bo{padding:13px 28px;background:rgba(255,255,255,.05);color:var(--t);border:1px solid var(--br);
+  border-radius:100px;font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer;
+  transition:.25s;display:inline-flex;align-items:center;gap:6px;text-decoration:none;backdrop-filter:blur(8px)}
+.bo:hover{border-color:rgba(139,92,246,.5);color:var(--p2)}
+
+/* Stats strip */
+.hst{display:flex;flex-wrap:wrap;justify-content:center;
+  margin-top:56px;max-width:700px;
+  background:rgba(255,255,255,.025);border:1px solid var(--br);border-radius:14px;
+  overflow:hidden;backdrop-filter:blur(10px);
+  animation:fu .8s .32s cubic-bezier(.34,1.56,.64,1) both}
+.hsi{flex:1;min-width:130px;text-align:center;padding:20px 14px;border-right:1px solid var(--br)}
+.hsi:last-child{border-right:none}
+.hsn{font-size:28px;font-weight:800;display:block;
+  background:linear-gradient(135deg,var(--p2),var(--c));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsl{font-size:10px;color:var(--t2);display:block;margin-top:2px;line-height:1.3}
+
+@keyframes fu{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════ MARQUEE ═══════════════════════ */
+.mq{padding:22px 0;border-top:1px solid var(--br);border-bottom:1px solid var(--br);overflow:hidden;
+  position:relative;z-index:2}
+.mq::before,.mq::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:3;pointer-events:none}
+.mq::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.mq::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+.mqi{display:flex;gap:40px;width:max-content;animation:mqs 24s linear infinite}
+.mqt{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--t3);white-space:nowrap}
+.mqd{width:3px;height:3px;border-radius:50%;background:var(--p);flex-shrink:0}
+@keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══════════════════════ SECTIONS ═══════════════════════ */
+.sec{padding:80px 0}
+.sec.dark{background:var(--s1)}
+.sec.dark2{background:var(--s2)}
+
+.sh{margin-bottom:48px}
+.sh.c{text-align:center}
+.stag{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--p2);margin-bottom:12px}
+.stag::before{content:'';width:16px;height:1.5px;background:var(--p2);border-radius:2px}
+.sh h2{font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.08}
+.sh h2 em{font-style:normal;background:linear-gradient(120deg,var(--p2),var(--c));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sh p{color:var(--t2);font-size:14px;line-height:1.7;margin-top:12px;max-width:440px}
+.sh.c p{margin:12px auto 0}
+
+/* ═══════════════════════ REVEAL ═══════════════════════ */
+.rv{opacity:0;transform:translateY(28px);transition:.65s cubic-bezier(.34,1.56,.64,1)}
+.rvl{opacity:0;transform:translateX(-28px);transition:.65s cubic-bezier(.34,1.56,.64,1)}
+.rvr{opacity:0;transform:translateX(28px);transition:.65s cubic-bezier(.34,1.56,.64,1)}
+.rvs{opacity:0;transform:scale(.95);transition:.65s cubic-bezier(.34,1.56,.64,1)}
+.rv.in,.rvl.in,.rvr.in,.rvs.in{opacity:1;transform:none}
+.d1{transition-delay:.05s}.d2{transition-delay:.12s}.d3{transition-delay:.19s}
+.d4{transition-delay:.26s}.d5{transition-delay:.33s}.d6{transition-delay:.4s}
+.d7{transition-delay:.47s}.d8{transition-delay:.54s}
+
+/* ═══════════════════════ ABOUT ═══════════════════════ */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.abox{background:var(--s2);border:1px solid var(--br);border-radius:22px;
+  padding:36px;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden}
+.abox::before{content:'';position:absolute;top:-30%;left:-20%;width:70%;height:70%;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,246,.16),transparent 70%);pointer-events:none}
+.abox::after{content:'';position:absolute;bottom:-25%;right:-15%;width:55%;height:55%;border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.09),transparent 70%);pointer-events:none}
+.abox-bg{position:absolute;top:24px;left:24px;font-size:clamp(48px,9vw,86px);font-weight:900;
+  color:rgba(255,255,255,.04);letter-spacing:-.04em;pointer-events:none;line-height:1}
+.chips{display:flex;flex-wrap:wrap;gap:7px;position:relative;z-index:1}
+.chip{padding:6px 14px;border:1px solid var(--br);border-radius:100px;
+  font-size:11px;font-weight:600;color:var(--t2);background:rgba(255,255,255,.03);transition:.2s}
+.chip:hover{border-color:var(--p);color:var(--p2)}
+.atxt p{color:var(--t2);font-size:14px;line-height:1.75;margin-bottom:22px}
+.abtns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ═══════════════════════ SERVICES ═══════════════════════ */
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.sc{background:var(--card);border:1px solid var(--br);border-radius:18px;padding:28px;
+  cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(139,92,246,.07),transparent);opacity:0;transition:.3s}
+.sc:hover{border-color:rgba(139,92,246,.35);transform:translateY(-5px) scale(1.01);
+  background:rgba(255,255,255,.04)}
+.sc:hover::before{opacity:1}
+.sico{width:44px;height:44px;border-radius:12px;background:rgba(139,92,246,.12);
+  border:1px solid rgba(139,92,246,.18);display:flex;align-items:center;justify-content:center;
+  font-size:19px;margin-bottom:16px;flex-shrink:0}
+.sarr{position:absolute;top:20px;right:20px;width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--br);display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--t3);transition:.25s}
+.sc:hover .sarr{border-color:var(--p);color:var(--p2);transform:rotate(45deg)}
+.sc h3{font-size:15px;font-weight:700;margin-bottom:7px}
+.sc p{font-size:12px;color:var(--t2);line-height:1.6}
+
+/* ═══════════════════════ FEATURES ═══════════════════════ */
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fc{background:var(--s2);border:1px solid var(--br);border-radius:18px;padding:32px 24px;
+  position:relative;overflow:hidden;transition:.35s}
+.fc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;
+  background:linear-gradient(90deg,var(--p),var(--c));
+  transform:scaleX(0);transform-origin:left;transition:.35s}
+.fc:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.28)}
+.fc:hover::after{transform:scaleX(1)}
+.fic{font-size:26px;margin-bottom:18px;display:block}
+.fc h3{font-size:15px;font-weight:700;margin-bottom:8px}
+.fc p{font-size:12px;color:var(--t2);line-height:1.65}
+
+/* ═══════════════════════ STATS ═══════════════════════ */
+.stg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  background:var(--br);border-radius:18px;overflow:hidden}
+.stc{background:var(--s1);padding:44px 20px;text-align:center;
+  position:relative;overflow:hidden;transition:.3s;cursor:default}
+.stc::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:50%;height:1.5px;background:linear-gradient(90deg,transparent,var(--p),transparent)}
+.stc:hover{background:var(--s2)}
+.stn{font-size:clamp(34px,4.5vw,58px);font-weight:800;display:block;line-height:1;
+  background:linear-gradient(135deg,var(--p2),var(--c));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stl{font-size:12px;color:var(--t2);display:block;margin-top:8px}
+
+/* ═══════════════════════ PROCESS ═══════════════════════ */
+.pg{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative}
+.ps{background:var(--s2);border:1px solid var(--br);border-radius:16px;
+  padding:26px 16px;text-align:center;position:relative;transition:.35s}
+.ps:hover{border-color:rgba(139,92,246,.3);transform:translateY(-4px)}
+.pnum{width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;
+  font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;box-shadow:0 0 16px var(--gp)}
+.ps h4{font-size:12px;font-weight:700;margin-bottom:5px}
+.ps p{font-size:10px;color:var(--t2);line-height:1.5}
+.pline{position:absolute;top:37px;right:-16px;width:32px;height:1px;
+  background:linear-gradient(90deg,rgba(139,92,246,.5),transparent)}
+.ps:last-child .pline{display:none}
+
+/* ═══════════════════════ PRICING ═══════════════════════ */
+.prg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
+.prc{background:var(--card);border:1px solid var(--br);border-radius:22px;padding:34px 28px;
+  position:relative;transition:.35s}
+.prc:hover{transform:translateY(-4px)}
+.prc.hot{background:linear-gradient(145deg,rgba(139,92,246,.14),rgba(56,189,248,.06));
+  border-color:rgba(139,92,246,.4)}
+.phot{position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  padding:4px 16px;border-radius:100px;
+  background:linear-gradient(90deg,var(--p),var(--pk));
+  font-size:10px;font-weight:700;white-space:nowrap;color:#fff}
+.pname{font-size:18px;font-weight:700;margin-bottom:5px}
+.ptag{font-size:11px;color:var(--t2);margin-bottom:20px}
+.pval{font-size:44px;font-weight:800;line-height:1;
+  background:linear-gradient(135deg,var(--p2),var(--c));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pper{font-size:12px;color:var(--t2);margin:5px 0 24px}
+.pfeats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+.pfeats li{font-size:12px;color:var(--t2);display:flex;align-items:flex-start;gap:8px}
+.pfeats li::before{content:'✓';width:16px;height:16px;border-radius:50%;flex-shrink:0;
+  background:rgba(139,92,246,.16);color:var(--p2);font-size:9px;
+  display:flex;align-items:center;justify-content:center;margin-top:1px}
+.pbtn{width:100%;padding:12px;border-radius:10px;font-family:var(--f);font-size:13px;
+  font-weight:600;cursor:pointer;transition:.25s}
+.pbtn.s{background:var(--p);color:#fff;border:none;box-shadow:0 0 20px var(--gp)}
+.pbtn.s:hover{background:var(--p2);transform:translateY(-2px)}
+.pbtn.g{background:transparent;color:var(--t);border:1px solid var(--br)}
+.pbtn.g:hover{border-color:var(--p);color:var(--p2)}
+
+/* ═══════════════════════ INDUSTRIES ═══════════════════════ */
+.ig{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.ic{background:var(--s2);border:1px solid var(--br);border-radius:14px;
+  padding:22px 18px;text-align:center;transition:.35s}
+.ic:hover{border-color:rgba(139,92,246,.3);transform:translateY(-4px);
+  background:rgba(139,92,246,.06)}
+.iico{font-size:24px;display:block;margin-bottom:10px}
+.ic h4{font-size:13px;font-weight:700;margin-bottom:4px}
+.ic p{font-size:10px;color:var(--t2);line-height:1.4}
+
+/* ═══════════════════════ FAQ ═══════════════════════ */
+.fl{display:flex;flex-direction:column;gap:8px;max-width:760px}
+.fi{background:var(--card);border:1px solid var(--br);border-radius:14px;overflow:hidden;transition:.2s}
+.fi.on{border-color:rgba(139,92,246,.3)}
+.fq{width:100%;padding:18px 22px;background:transparent;border:none;
+  color:var(--t);font-family:var(--f);font-size:14px;font-weight:600;
+  text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.fic{width:24px;height:24px;border-radius:50%;border:1px solid var(--br);
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+  color:var(--t2);flex-shrink:0;transition:.25s}
+.fi.on .fic{transform:rotate(45deg);border-color:var(--p);color:var(--p2)}
+.fa{padding:0 22px;font-size:13px;color:var(--t2);line-height:1.7;
+  max-height:0;overflow:hidden;transition:.35s ease}
+.fi.on .fa{max-height:140px;padding:0 22px 18px}
+
+/* ═══════════════════════ CTA ═══════════════════════ */
+.ctasec{padding:80px 20px;text-align:center}
+.ctabox{max-width:660px;margin:0 auto;padding:60px 36px;
+  background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(56,189,248,.06));
+  border:1px solid rgba(139,92,246,.22);border-radius:28px;position:relative;overflow:hidden}
+.ctabox::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,246,.16),transparent 70%);pointer-events:none}
+.ctabox h2{font-size:clamp(24px,4vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:12px}
+.ctabox p{font-size:14px;color:var(--t2);margin-bottom:28px}
+.ctabtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* ═══════════════════════ FOOTER ═══════════════════════ */
+footer{border-top:1px solid var(--br);padding:56px 0 24px;background:var(--s1)}
+.ftg{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:36px;margin-bottom:40px}
+.fb img{height:32px;filter:drop-shadow(0 0 8px rgba(139,92,246,.5))}
+.fb p{font-size:12px;color:var(--t2);line-height:1.7;margin:14px 0 18px;max-width:230px}
+.socs{display:flex;gap:7px}
+.soc{width:32px;height:32px;border-radius:8px;border:1px solid var(--br);
+  background:var(--card);display:flex;align-items:center;justify-content:center;
+  text-decoration:none;color:var(--t2);transition:.2s}
+.soc:hover{border-color:var(--p);color:var(--p2);background:rgba(139,92,246,.1);transform:translateY(-2px)}
+.fcol h4{font-size:12px;font-weight:700;margin-bottom:14px;color:#fff}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fcol ul li a{color:var(--t2);text-decoration:none;font-size:12px;transition:.15s}
+.fcol ul li a:hover{color:var(--p2)}
+.fbot{border-top:1px solid var(--br);padding-top:20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fbot p{font-size:11px;color:var(--t2)}
+
+/* ═══════════════════════ FLOAT WA ═══════════════════════ */
+.wa{position:fixed;bottom:20px;right:20px;width:52px;height:52px;
+  background:#25D366;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;z-index:997;text-decoration:none;
+  box-shadow:0 4px 20px rgba(37,211,102,.45);transition:.2s}
+.wa:hover{transform:scale(1.1)}
+.wa::before{content:'';position:absolute;inset:-5px;border:2px solid rgba(37,211,102,.3);
+  border-radius:50%;animation:wap 2s infinite}
+@keyframes wap{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.55);opacity:0}}
+.wa svg{width:24px;height:24px;fill:#fff}
+
+/* ═══════════════════════ MODAL ═══════════════════════ */
+.mbg{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);
+  z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px;
+  opacity:0;visibility:hidden;transition:.3s}
+.mbg.open{opacity:1;visibility:visible}
+.mb{background:var(--s1);border:1px solid var(--br);border-radius:24px;
+  padding:36px 28px;width:100%;max-width:480px;
+  transform:translateY(24px) scale(.97);transition:.35s cubic-bezier(.34,1.56,.64,1);
+  position:relative;max-height:88vh;overflow-y:auto}
+.mbg.open .mb{transform:none}
+.mx{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;
+  border:1px solid var(--br);background:transparent;color:var(--t2);
+  font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mx:hover{border-color:var(--p);color:var(--p2)}
+.mb h3{font-size:20px;font-weight:700;margin-bottom:4px}
+.msub{font-size:12px;color:var(--t2);margin-bottom:20px}
+.mts{display:flex;gap:5px;background:rgba(255,255,255,.03);border-radius:12px;padding:3px;margin-bottom:20px}
+.mt{flex:1;padding:8px;border:none;border-radius:9px;background:transparent;color:var(--t2);
+  font-family:var(--f);font-size:12px;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:5px;transition:.2s}
+.mt.on{background:var(--p);color:#fff}
+.mp{display:none}.mp.on{display:block}
+.fg2{margin-bottom:12px}
+.fg2 label{display:block;font-size:11px;font-weight:600;color:var(--t2);margin-bottom:6px}
+.fg2 input,.fg2 textarea,.fg2 select{width:100%;padding:10px 14px;
+  background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:10px;
+  color:var(--t);font-family:var(--f);font-size:13px;outline:none;transition:.2s}
+.fg2 input:focus,.fg2 textarea:focus,.fg2 select:focus{border-color:var(--p)}
+.fg2 textarea{height:80px;resize:none}
+.fg2 select{appearance:none;cursor:pointer}
+.fg2 select option{background:var(--s1)}
+.msend{width:100%;padding:12px;background:var(--p);color:#fff;border:none;border-radius:10px;
+  font-family:var(--f);font-size:13px;font-weight:600;cursor:pointer;
+  transition:.25s;margin-top:4px;box-shadow:0 0 18px var(--gp)}
+.msend:hover{background:var(--p2);transform:translateY(-1px)}
+
+/* ═══════════════════════ MOBILE ═══════════════════════ */
+@media(max-width:768px){
+  nav .nl{display:none}
+  nav .bnav{display:none}
+  .hbg{display:flex}
+
+  .hero{padding:100px 16px 56px}
+  .hero h1{font-size:clamp(36px,10vw,52px)}
+  .hero-p{font-size:13px}
+  .hbtns{flex-direction:column;align-items:center}
+  .bp,.bo{width:100%;max-width:300px;justify-content:center;padding:13px 20px}
+
+  .hst{margin-top:40px;border-radius:12px}
+  .hsi{min-width:50%;padding:16px 10px}
+  .hsn{font-size:24px}
+  .hsl{font-size:9px}
+  .hsi:nth-child(3){border-top:1px solid var(--br)}
+  .hsi:nth-child(4){border-top:1px solid var(--br);border-right:none}
+
+  .ag{grid-template-columns:1fr}
+  .abox{min-height:200px;padding:24px}
+  .abox-bg{font-size:48px}
+
+  .sg{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+  .stg{grid-template-columns:repeat(2,1fr)}
+  .stc{padding:28px 14px}
+  .pg{grid-template-columns:1fr 1fr}
+  .pline{display:none}
+  .prg{grid-template-columns:1fr}
+  .prc.hot{transform:none}
+  .ig{grid-template-columns:repeat(2,1fr)}
+
+  .ftg{grid-template-columns:1fr;gap:24px}
+  .fb p{max-width:100%}
+  .fbot{flex-direction:column;text-align:center}
+
+  .sec{padding:56px 0}
+  .sh{margin-bottom:32px}
+  .ctabox{padding:36px 20px}
+  .mb{padding:28px 18px}
+
+  .ctabtns{flex-direction:column;align-items:center}
+  .ctabtns .bp,.ctabtns .bo{width:100%;max-width:300px;justify-content:center}
+}
+@media(max-width:380px){
+  .hero h1{font-size:34px}
+  .hsi{min-width:100%;border-right:none !important;border-top:1px solid var(--br) !important}
+  .hsi:first-child{border-top:none !important}
+  .ig{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="page">
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nlogo">
+    <img src="https://i.postimg.cc/brGySZqb/LOGO-NEW-one.png" alt="Verto">
+    <div class="nbr">
+      <span class="nbn">Verto Media Global</span>
+      <span class="nbs" data-en="Digital Marketing" data-es="Marketing Digital">Digital Marketing</span>
+    </div>
+  </a>
+  <ul class="nl">
+    <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+    <li><a href="#about" data-en="About" data-es="Nosotros">About</a></li>
+    <li><a href="#pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+    <li><a href="#faq" data-en="FAQ" data-es="FAQ">FAQ</a></li>
+  </ul>
+  <div class="nr">
+    <div class="ls"><button class="lb on" onclick="L('en')">EN</button><button class="lb" onclick="L('es')">ES</button></div>
+    <button class="bnav" onclick="openM()" data-en="Get Started" data-es="Comenzar">Get Started</button>
+    <div class="hbg" id="hbg" onclick="mob()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob" id="mobmenu">
+  <a href="#services" onclick="mob()" data-en="Services" data-es="Servicios">Services</a>
+  <a href="#about" onclick="mob()" data-en="About" data-es="Nosotros">About</a>
+  <a href="#pricing" onclick="mob()" data-en="Pricing" data-es="Precios">Pricing</a>
+  <a href="#faq" onclick="mob()" data-en="FAQ" data-es="FAQ">FAQ</a>
+  <button class="mbb" onclick="openM();mob()" data-en="🚀 Get Started" data-es="🚀 Comenzar">🚀 Get Started</button>
+  <div class="ls" style="margin-top:10px"><button class="lb on" onclick="L('en')">EN</button><button class="lb" onclick="L('es')">ES</button></div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="badge" data-en="🌍 International Digital Marketing Agency" data-es="🌍 Agencia Internacional de Marketing Digital">🌍 International Digital Marketing Agency</div>
+  <h1>
+    <span data-en="Understand." data-es="Comprender.">Understand.</span><br>
+    <span class="grad" data-en="Create. Convert." data-es="Crear. Convertir.">Create. Convert.</span>
+  </h1>
+  <p class="hero-p" data-en="We transform brands into global digital powerhouses. Strategic campaigns, multilingual reach — in 6 languages across 8 industries." data-es="Transformamos marcas en potencias digitales globales. Campañas estratégicas, alcance multilingüe — en 6 idiomas en 8 industrias.">We transform brands into global digital powerhouses. Strategic campaigns, multilingual reach — in 6 languages across 8 industries.</p>
+  <div class="hbtns">
+    <button class="bp" onclick="openM()" data-en="🚀 Start Growing" data-es="🚀 Empieza a Crecer">🚀 Start Growing</button>
+    <a href="#services" class="bo" data-en="Explore Services →" data-es="Ver Servicios →">Explore Services →</a>
+  </div>
+  <div class="hst rv">
+    <div class="hsi"><span class="hsn" data-count="125">0</span><span class="hsl" data-en="% Avg Traffic Growth" data-es="% Crecimiento de Tráfico">% Avg Traffic Growth</span></div>
+    <div class="hsi" style="border-right:1px solid var(--br)"><span class="hsn" data-count="487">0</span><span class="hsl" data-en="% Average ROI" data-es="% ROI Promedio">% Average ROI</span></div>
+    <div class="hsi"><span class="hsn" data-count="350">0</span><span class="hsl" data-en="+ Qualified Leads" data-es="+ Leads Calificados">+ Qualified Leads</span></div>
+    <div class="hsi"><span class="hsn">24h</span><span class="hsl" data-en="Response Time" data-es="Tiempo de Respuesta">Response Time</span></div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="mq">
+  <div class="mqi">
+    <span class="mqt"><span class="mqd"></span><span data-en="Email Marketing" data-es="Email Marketing">Email Marketing</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Digital Strategy" data-es="Estrategia Digital">Digital Strategy</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Performance Analytics" data-es="Analítica">Performance Analytics</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Content Creation" data-es="Creación de Contenido">Content Creation</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="SEO & Visibility" data-es="SEO & Visibilidad">SEO & Visibility</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Social Media" data-es="Redes Sociales">Social Media</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Paid Advertising" data-es="Publicidad de Pago">Paid Advertising</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Branding & Identity" data-es="Branding">Branding & Identity</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Email Marketing" data-es="Email Marketing">Email Marketing</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Digital Strategy" data-es="Estrategia Digital">Digital Strategy</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Performance Analytics" data-es="Analítica">Performance Analytics</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Content Creation" data-es="Creación de Contenido">Content Creation</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="SEO & Visibility" data-es="SEO & Visibilidad">SEO & Visibility</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Social Media" data-es="Redes Sociales">Social Media</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Paid Advertising" data-es="Publicidad de Pago">Paid Advertising</span></span>
+    <span class="mqt"><span class="mqd"></span><span data-en="Branding & Identity" data-es="Branding">Branding & Identity</span></span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="sec dark" id="about">
+  <div class="ct">
+    <div class="ag">
+      <div class="abox rvl" style="padding:0;overflow:hidden;min-height:420px;border-radius:22px;position:relative;background:#07061a;border:1px solid rgba(139,92,246,.18)">
+        <canvas id="about-canvas" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+        <!-- Metric cards -->
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;gap:12px;z-index:2">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(139,92,246,.2);border-radius:14px;padding:18px 16px;backdrop-filter:blur(10px)">
+              <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px" data-en="Traffic Growth" data-es="Crecimiento">Traffic Growth</div>
+              <div style="font-size:28px;font-weight:800;background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">+125%</div>
+              <div style="display:flex;align-items:center;gap:4px;margin-top:6px"><span style="color:#22c55e;font-size:11px;font-weight:600">↑ 23%</span><span style="color:rgba(255,255,255,.3);font-size:10px">vs last month</span></div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(56,189,248,.2);border-radius:14px;padding:18px 16px;backdrop-filter:blur(10px)">
+              <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">ROI Average</div>
+              <div style="font-size:28px;font-weight:800;background:linear-gradient(135deg,#38bdf8,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">+487%</div>
+              <div style="display:flex;align-items:center;gap:4px;margin-top:6px"><span style="color:#22c55e;font-size:11px;font-weight:600">↑ 41%</span><span style="color:rgba(255,255,255,.3);font-size:10px">vs last quarter</span></div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;backdrop-filter:blur(10px)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <span style="font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase" data-en="Campaign Performance" data-es="Rendimiento">Campaign Performance</span>
+              <span style="font-size:10px;color:#22c55e;font-weight:600">LIVE</span>
+            </div>
+            <div style="display:flex;gap:4px;align-items:flex-end;height:36px">
+              <div style="flex:1;background:rgba(139,92,246,.3);border-radius:3px;height:45%;animation:bar1 3s ease-in-out infinite"></div>
+              <div style="flex:1;background:rgba(139,92,246,.5);border-radius:3px;height:70%;animation:bar2 3s ease-in-out infinite"></div>
+              <div style="flex:1;background:rgba(139,92,246,.4);border-radius:3px;height:55%;animation:bar3 3s ease-in-out infinite"></div>
+              <div style="flex:1;background:rgba(139,92,246,.7);border-radius:3px;height:85%;animation:bar4 3s ease-in-out infinite"></div>
+              <div style="flex:1;background:rgba(139,92,246,.5);border-radius:3px;height:65%;animation:bar5 3s ease-in-out infinite"></div>
+              <div style="flex:1;background:rgba(56,189,248,.6);border-radius:3px;height:90%;animation:bar6 3s ease-in-out infinite"></div>
+              <div style="flex:1;background:rgba(56,189,248,.8);border-radius:3px;height:100%;animation:bar7 3s ease-in-out infinite"></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+              <div style="width:32px;height:32px;border-radius:8px;background:rgba(139,92,246,.2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🌍</div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff">6 Languages</div><div style="font-size:9px;color:rgba(255,255,255,.35)">EN ES FR DE IT AR</div></div>
+            </div>
+            <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+              <div style="width:32px;height:32px;border-radius:8px;background:rgba(56,189,248,.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">⚡</div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff">350+ Leads</div><div style="font-size:9px;color:rgba(255,255,255,.35)" data-en="Qualified monthly" data-es="Calificados">Qualified monthly</div></div>
+            </div>
+          </div>
+        </div>
+        <style>
+          @keyframes bar1{0%,100%{height:45%}50%{height:60%}}
+          @keyframes bar2{0%,100%{height:70%}50%{height:50%}}
+          @keyframes bar3{0%,100%{height:55%}50%{height:80%}}
+          @keyframes bar4{0%,100%{height:85%}50%{height:65%}}
+          @keyframes bar5{0%,100%{height:65%}50%{height:90%}}
+          @keyframes bar6{0%,100%{height:90%}50%{height:70%}}
+          @keyframes bar7{0%,100%{height:100%}50%{height:75%}}
+        </style>
+        <script>
+          (function(){
+            const cv=document.getElementById('about-canvas');
+            if(!cv)return;
+            const cx=cv.getContext('2d');
+            function rsz(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight}
+            rsz();
+            const pts=Array.from({length:28},()=>({
+              x:Math.random()*cv.width,y:Math.random()*cv.height,
+              vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,
+              r:Math.random()*2+1
+            }));
+            function draw(){
+              rsz();
+              cx.clearRect(0,0,cv.width,cv.height);
+              pts.forEach(p=>{
+                p.x+=p.vx;p.y+=p.vy;
+                if(p.x<0||p.x>cv.width)p.vx*=-1;
+                if(p.y<0||p.y>cv.height)p.vy*=-1;
+                cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+                cx.fillStyle='rgba(139,92,246,.5)';cx.fill();
+              });
+              pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{
+                const d=Math.hypot(a.x-b.x,a.y-b.y);
+                if(d<90){cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);
+                  cx.strokeStyle=`rgba(139,92,246,${.12*(1-d/90)})`;cx.lineWidth=.6;cx.stroke()}
+              }));
+              requestAnimationFrame(draw);
+            }
+            draw();
+          })();
+        </script>
+      </div>
+      <div class="atxt rvr">
+        <div class="sh"><span class="stag" data-en="About Us" data-es="Nosotros">About Us</span>
+          <h2 data-en="We don't just market.<br><em>We build empires.</em>" data-es="No solo marketing.<br><em>Construimos imperios.</em>">We don't just market.<br><em>We build empires.</em></h2>
+        </div>
+        <p data-en="Based in Casablanca, operating globally — Verto Media Global is a multilingual digital marketing agency built for ambitious brands. We combine strategy, creativity, and data to deliver campaigns that actually convert." data-es="Con sede en Casablanca, operando globalmente — Verto Media Global es una agencia de marketing digital multilingüe construida para marcas ambiciosas. Combinamos estrategia, creatividad y datos para campañas que realmente convierten.">Based in Casablanca, operating globally — Verto Media Global is a multilingual digital marketing agency built for ambitious brands. We combine strategy, creativity, and data to deliver campaigns that actually convert.</p>
+        <div class="abtns">
+          <button class="bp" onclick="openM()" data-en="Work With Us" data-es="Trabaja Con Nosotros">Work With Us</button>
+          <a href="#services" class="bo" data-en="Our Services" data-es="Nuestros Servicios">Our Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="sec" id="services">
+  <div class="ct">
+    <div class="sh c rv">
+      <span class="stag" data-en="Services" data-es="Servicios">Services</span>
+      <h2 data-en="Everything you need <em>to grow.</em>" data-es="Todo lo que necesitas <em>para crecer.</em>">Everything you need <em>to grow.</em></h2>
+      <p data-en="8 specialized services to amplify your brand across every digital channel." data-es="8 servicios especializados para amplificar tu marca en cada canal digital.">8 specialized services to amplify your brand across every digital channel.</p>
+    </div>
+    <div class="sg">
+      <div class="sc rv d1" onclick="openM()"><div class="sico">📧</div><div class="sarr">↗</div><h3 data-en="Email Marketing" data-es="Email Marketing">Email Marketing</h3><p data-en="Strategic campaigns that nurture leads and drive conversions at every stage of the funnel." data-es="Campañas estratégicas que nutren leads y generan conversiones en cada etapa del embudo.">Strategic campaigns that nurture leads and drive conversions at every stage of the funnel.</p></div>
+      <div class="sc rv d2" onclick="openM()"><div class="sico">🧭</div><div class="sarr">↗</div><h3 data-en="Digital Strategy" data-es="Estrategia Digital">Digital Strategy</h3><p data-en="Custom roadmaps for brand awareness, conversion, and long-term loyalty." data-es="Hojas de ruta personalizadas para reconocimiento de marca, conversión y lealtad.">Custom roadmaps for brand awareness, conversion, and long-term loyalty.</p></div>
+      <div class="sc rv d3" onclick="openM()"><div class="sico">📊</div><div class="sarr">↗</div><h3 data-en="Performance Analytics" data-es="Analítica de Rendimiento">Performance Analytics</h3><p data-en="Deep tracking of traffic, ROI, and engagement with clear monthly reports." data-es="Seguimiento profundo del tráfico, ROI y participación con informes mensuales.">Deep tracking of traffic, ROI, and engagement with clear monthly reports.</p></div>
+      <div class="sc rv d4" onclick="openM()"><div class="sico">🎨</div><div class="sarr">↗</div><h3 data-en="Content Creation" data-es="Creación de Contenido">Content Creation</h3><p data-en="Professional visual production and strategic copywriting that captures attention." data-es="Producción visual profesional y redacción estratégica que captura la atención.">Professional visual production and strategic copywriting that captures attention.</p></div>
+      <div class="sc rv d5" onclick="openM()"><div class="sico">🔍</div><div class="sarr">↗</div><h3 data-en="SEO & Visibility" data-es="SEO & Visibilidad">SEO & Visibility</h3><p data-en="On-page and off-page optimization that puts your brand at the top of Google." data-es="Optimización que coloca tu marca en la cima de Google.">On-page and off-page optimization that puts your brand at the top of Google.</p></div>
+      <div class="sc rv d6" onclick="openM()"><div class="sico">📱</div><div class="sarr">↗</div><h3 data-en="Social Media Management" data-es="Gestión de Redes Sociales">Social Media Management</h3><p data-en="Full-service social strategy, content calendar, community management, and growth." data-es="Estrategia social completa, calendario de contenido, gestión comunitaria y crecimiento.">Full-service social strategy, content calendar, community management, and growth.</p></div>
+      <div class="sc rv d7" onclick="openM()"><div class="sico">📣</div><div class="sarr">↗</div><h3 data-en="Paid Advertising" data-es="Publicidad de Pago">Paid Advertising</h3><p data-en="High-performance ads on Meta, Google, and TikTok with rigorous A/B testing." data-es="Anuncios de alto rendimiento en Meta, Google y TikTok con pruebas A/B rigurosas.">High-performance ads on Meta, Google, and TikTok with rigorous A/B testing.</p></div>
+      <div class="sc rv d8" onclick="openM()"><div class="sico">💎</div><div class="sarr">↗</div><h3 data-en="Branding & Identity" data-es="Branding e Identidad">Branding & Identity</h3><p data-en="Logo, brand guidelines, and web design that makes your brand unforgettable." data-es="Logo, directrices de marca y diseño web que hace tu marca inolvidable.">Logo, brand guidelines, and web design that makes your brand unforgettable.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="sec dark" id="features">
+  <div class="ct">
+    <div class="sh c rv">
+      <span class="stag" data-en="Why Verto" data-es="Por qué Verto">Why Verto</span>
+      <h2 data-en="Built different. <em>Built to win.</em>" data-es="Construidos diferente. <em>Para ganar.</em>">Built different. <em>Built to win.</em></h2>
+    </div>
+    <div class="fg">
+      <div class="fc rv d1"><span class="fic">🎯</span><h3 data-en="Strategic Approach" data-es="Enfoque Estratégico">Strategic Approach</h3><p data-en="Every campaign starts with a deep brand audit and a custom action plan tailored to your market and objectives." data-es="Cada campaña comienza con una auditoría de marca y un plan de acción personalizado para tu mercado.">Every campaign starts with a deep brand audit and a custom action plan tailored to your market and objectives.</p></div>
+      <div class="fc rv d2"><span class="fic">🌍</span><h3 data-en="Multilingual Reach" data-es="Alcance Multilingüe">Multilingual Reach</h3><p data-en="We operate natively in 6 languages: English, Spanish, French, German, Italian, Arabic — real global reach." data-es="Operamos nativamente en 6 idiomas: inglés, español, francés, alemán, italiano, árabe — alcance global real.">We operate natively in 6 languages: English, Spanish, French, German, Italian, Arabic — real global reach.</p></div>
+      <div class="fc rv d3"><span class="fic">📈</span><h3 data-en="Measurable Results" data-es="Resultados Medibles">Measurable Results</h3><p data-en="Every metric tracked, every campaign optimized. Monthly reports show exactly what's growing your brand." data-es="Cada métrica rastreada, cada campaña optimizada. Los informes mensuales muestran exactamente qué hace crecer tu marca.">Every metric tracked, every campaign optimized. Monthly reports show exactly what's growing your brand.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="sec" id="stats">
+  <div class="ct">
+    <div class="sh c rv">
+      <span class="stag" data-en="Our Impact" data-es="Nuestro Impacto">Our Impact</span>
+      <h2 data-en="Numbers that <em>speak.</em>" data-es="Números que <em>hablan.</em>">Numbers that <em>speak.</em></h2>
+    </div>
+    <div class="stg rv">
+      <div class="stc"><span class="stn" data-count="125">0</span><span class="stl" data-en="% Average Traffic Growth" data-es="% Crecimiento de Tráfico">% Average Traffic Growth</span></div>
+      <div class="stc"><span class="stn" data-count="487">0</span><span class="stl" data-en="% Average ROI" data-es="% ROI Promedio">% Average ROI</span></div>
+      <div class="stc"><span class="stn" data-count="350">0</span><span class="stl" data-en="+ Qualified Leads" data-es="+ Leads Calificados">+ Qualified Leads</span></div>
+      <div class="stc"><span class="stn">24h</span><span class="stl" data-en="Max Response Time" data-es="Tiempo de Respuesta">Max Response Time</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="sec dark" id="process">
+  <div class="ct">
+    <div class="sh c rv">
+      <span class="stag" data-en="How It Works" data-es="Cómo Funciona">How It Works</span>
+      <h2 data-en="5 steps to <em>your growth.</em>" data-es="5 pasos hacia <em>tu crecimiento.</em>">5 steps to <em>your growth.</em></h2>
+    </div>
+    <div class="pg">
+      <div class="ps rv d1"><div class="pnum">1</div><div class="pline"></div><h4 data-en="Analysis & Strategy" data-es="Análisis y Estrategia">Analysis & Strategy</h4><p data-en="Brand audit, objectives & strategic plan." data-es="Auditoría de marca, objetivos y plan.">Brand audit, objectives & strategic plan.</p></div>
+      <div class="ps rv d2"><div class="pnum">2</div><div class="pline"></div><h4 data-en="Content Creation" data-es="Creación de Contenido">Content Creation</h4><p data-en="Visuals, copy & SEO content." data-es="Visuales, redacción y contenido SEO.">Visuals, copy & SEO content.</p></div>
+      <div class="ps rv d3"><div class="pnum">3</div><div class="pline"></div><h4 data-en="Activation" data-es="Activación">Activation</h4><p data-en="Publication, newsletters & ad launch." data-es="Publicación, newsletters y lanzamiento.">Publication, newsletters & ad launch.</p></div>
+      <div class="ps rv d4"><div class="pnum">4</div><div class="pline"></div><h4 data-en="Monitoring" data-es="Monitoreo">Monitoring</h4><p data-en="KPI tracking, A/B testing & reports." data-es="Seguimiento de KPI y pruebas A/B.">KPI tracking, A/B testing & reports.</p></div>
+      <div class="ps rv d5"><div class="pnum">5</div><h4 data-en="Results Delivered" data-es="Resultados Entregados">Results Delivered</h4><p data-en="Conversions, leads & measurable growth." data-es="Conversiones, leads y crecimiento.">Conversions, leads & measurable growth.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="sec" id="pricing">
+  <div class="ct">
+    <div class="sh c rv">
+      <span class="stag" data-en="Pricing" data-es="Precios">Pricing</span>
+      <h2 data-en="Invest in <em>your growth.</em>" data-es="Invierte en <em>tu crecimiento.</em>">Invest in <em>your growth.</em></h2>
+      <p data-en="Transparent pricing. No hidden fees. Real results." data-es="Precios transparentes. Sin cargos ocultos. Resultados reales.">Transparent pricing. No hidden fees. Real results.</p>
+    </div>
+    <div class="prg">
+      <div class="prc rv d1">
+        <div class="pname" data-en="Starter" data-es="Starter">Starter</div>
+        <div class="ptag" data-en="Online visibility for emerging brands" data-es="Visibilidad para marcas emergentes">Online visibility for emerging brands</div>
+        <div class="pval">$800</div>
+        <div class="pper" data-en="/ month" data-es="/ mes">/ month</div>
+        <ul class="pfeats">
+          <li data-en="Digital presence audit" data-es="Auditoría de presencia digital">Digital presence audit</li>
+          <li data-en="Moodboard + strategic recommendations" data-es="Moodboard + recomendaciones">Moodboard + strategic recommendations</li>
+          <li data-en="8 publications / month" data-es="8 publicaciones / mes">8 publications / month</li>
+          <li data-en="Publication scheduling" data-es="Programación de publicaciones">Publication scheduling</li>
+          <li data-en="Monthly performance report" data-es="Informe mensual">Monthly performance report</li>
+        </ul>
+        <button class="pbtn g" onclick="openM()" data-en="Get Started" data-es="Comenzar">Get Started</button>
+      </div>
+      <div class="prc hot rv d2">
+        <div class="phot" data-en="⭐ Most Popular" data-es="⭐ Más Popular">⭐ Most Popular</div>
+        <div class="pname" data-en="Launch" data-es="Launch">Launch</div>
+        <div class="ptag" data-en="Launch & Conversion — 5-6 weeks" data-es="Lanzamiento y Conversión — 5-6 semanas">Launch & Conversion — 5-6 weeks</div>
+        <div class="pval">$2,700</div>
+        <div class="pper" data-en="/ project" data-es="/ proyecto">/ project</div>
+        <ul class="pfeats">
+          <li data-en="Content strategy + calendar" data-es="Estrategia + calendario">Content strategy + calendar</li>
+          <li data-en="22 publications / month" data-es="22 publicaciones / mes">22 publications / month</li>
+          <li data-en="Community management" data-es="Gestión comunitaria">Community management</li>
+          <li data-en="2 newsletters / month" data-es="2 newsletters / mes">2 newsletters / month</li>
+          <li data-en="1 ad campaign managed" data-es="1 campaña gestionada">1 ad campaign managed</li>
+        </ul>
+        <button class="pbtn s" onclick="openM()" data-en="Start Now" data-es="Empezar Ahora">Start Now</button>
+      </div>
+      <div class="prc rv d3">
+        <div class="pname" data-en="Premium" data-es="Premium">Premium</div>
+        <div class="ptag" data-en="Custom 360° premium full-service" data-es="Servicio completo premium 360°">Custom 360° premium full-service</div>
+        <div class="pval">$5,400</div>
+        <div class="pper" data-en="/ project" data-es="/ proyecto">/ project</div>
+        <ul class="pfeats">
+          <li data-en="Custom 360° digital campaign" data-es="Campaña digital 360°">Custom 360° digital campaign</li>
+          <li data-en="Artistic direction + moodboard" data-es="Dirección artística + moodboard">Artistic direction + moodboard</li>
+          <li data-en="15 visuals + 3 ad formats" data-es="15 visuales + 3 formatos">15 visuals + 3 ad formats</li>
+          <li data-en="2 newsletters + landing page" data-es="2 newsletters + landing page">2 newsletters + landing page</li>
+          <li data-en="Premium priority support" data-es="Soporte prioritario premium">Premium priority support</li>
+        </ul>
+        <button class="pbtn g" onclick="openM()" data-en="Get Started" data-es="Comenzar">Get Started</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDUSTRIES ── -->
+<section class="sec dark" id="industries">
+  <div class="ct">
+    <div class="sh c rv">
+      <span class="stag" data-en="Industries" data-es="Industrias">Industries</span>
+      <h2 data-en="We speak <em>every industry.</em>" data-es="Hablamos <em>cada industria.</em>">We speak <em>every industry.</em></h2>
+    </div>
+    <div class="ig">
+      <div class="ic rv d1"><span class="iico">💄</span><h4 data-en="Beauty" data-es="Belleza">Beauty</h4><p data-en="Cosmetics, skincare, fragrances" data-es="Cosméticos, cuidado de piel">Cosmetics, skincare, fragrances</p></div>
+      <div class="ic rv d2"><span class="iico">🧘</span><h4 data-en="Wellness" data-es="Bienestar">Wellness</h4><p data-en="Spa, yoga, holistic health" data-es="Spa, yoga, salud holística">Spa, yoga, holistic health</p></div>
+      <div class="ic rv d3"><span class="iico">🏨</span><h4 data-en="Hospitality" data-es="Hostelería">Hospitality</h4><p data-en="Hotels, resorts, riads" data-es="Hoteles, resorts, riads">Hotels, resorts, riads</p></div>
+      <div class="ic rv d4"><span class="iico">👗</span><h4 data-en="Fashion" data-es="Moda">Fashion</h4><p data-en="Clothing, accessories" data-es="Ropa, accesorios">Clothing, accessories</p></div>
+      <div class="ic rv d5"><span class="iico">🍽️</span><h4 data-en="Food & Drink" data-es="Comida y Bebida">Food & Drink</h4><p data-en="Restaurants, cafés, F&B" data-es="Restaurantes, cafés">Restaurants, cafés, F&B</p></div>
+      <div class="ic rv d6"><span class="iico">✨</span><h4 data-en="Lifestyle" data-es="Lifestyle">Lifestyle</h4><p data-en="Premium lifestyle brands" data-es="Marcas premium de lifestyle">Premium lifestyle brands</p></div>
+      <div class="ic rv d7"><span class="iico">🏢</span><h4 data-en="Real Estate" data-es="Bienes Raíces">Real Estate</h4><p data-en="Property, luxury homes" data-es="Propiedades, casas de lujo">Property, luxury homes</p></div>
+      <div class="ic rv d8"><span class="iico">🛒</span><h4 data-en="E-commerce" data-es="E-commerce">E-commerce</h4><p data-en="Online shops, D2C brands" data-es="Tiendas online, marcas D2C">Online shops, D2C brands</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="sec" id="faq">
+  <div class="ct">
+    <div class="sh rv">
+      <span class="stag" data-en="FAQ" data-es="FAQ">FAQ</span>
+      <h2 data-en="Questions? <em>Answered.</em>" data-es="¿Preguntas? <em>Respondidas.</em>">Questions? <em>Answered.</em></h2>
+    </div>
+    <div class="fl">
+      <div class="fi rv d1"><button class="fq" onclick="faq(this)"><span data-en="What makes Verto Media Global different?" data-es="¿Qué hace diferente a Verto Media Global?">What makes Verto Media Global different?</span><span class="fic">+</span></button><div class="fa" data-en="We combine multilingual expertise (6 languages) with data-driven strategy and creative production — building integrated campaigns designed to convert across every touchpoint." data-es="Combinamos experiencia multilingüe (6 idiomas) con estrategia basada en datos y producción creativa — construyendo campañas integradas diseñadas para convertir.">We combine multilingual expertise (6 languages) with data-driven strategy and creative production — building integrated campaigns designed to convert across every touchpoint.</div></div>
+      <div class="fi rv d2"><button class="fq" onclick="faq(this)"><span data-en="How long does it take to see results?" data-es="¿Cuánto tiempo tarda en ver resultados?">How long does it take to see results?</span><span class="fic">+</span></button><div class="fa" data-en="For organic growth (SEO, social), expect meaningful results within 60-90 days. For paid campaigns, you'll see initial data within the first 2 weeks of launch." data-es="Para crecimiento orgánico, espera resultados en 60-90 días. Para campañas de pago, verás datos iniciales en las primeras 2 semanas.">For organic growth (SEO, social), expect meaningful results within 60-90 days. For paid campaigns, you'll see initial data within the first 2 weeks of launch.</div></div>
+      <div class="fi rv d3"><button class="fq" onclick="faq(this)"><span data-en="Which languages do you operate in?" data-es="¿En qué idiomas operan?">Which languages do you operate in?</span><span class="fic">+</span></button><div class="fa" data-en="We create and manage content in English, Spanish, French, German, Italian, and Arabic — with native-level proficiency ensuring authentic communication in every market." data-es="Creamos y gestionamos contenido en inglés, español, francés, alemán, italiano y árabe — con dominio nativo garantizando comunicación auténtica en cada mercado.">We create and manage content in English, Spanish, French, German, Italian, and Arabic — with native-level proficiency ensuring authentic communication in every market.</div></div>
+      <div class="fi rv d4"><button class="fq" onclick="faq(this)"><span data-en="Can I start with one service and scale up?" data-es="¿Puedo empezar con un servicio y escalar?">Can I start with one service and scale up?</span><span class="fic">+</span></button><div class="fa" data-en="Absolutely. Many clients begin with our Starter package or a single service, then scale up to full 360° campaigns as results grow." data-es="Absolutamente. Muchos clientes comienzan con el paquete Starter o un solo servicio y escalan a campañas completas 360° a medida que crecen los resultados.">Absolutely. Many clients begin with our Starter package or a single service, then scale up to full 360° campaigns as results grow.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="ctasec" id="cta">
+  <div class="ctabox rv">
+    <h2 data-en="Ready to grow your brand globally?" data-es="¿Listo para hacer crecer tu marca globalmente?">Ready to grow your brand globally?</h2>
+    <p data-en="Join ambitious brands scaling with Verto Media Global." data-es="Únete a marcas ambiciosas que escalan con Verto Media Global.">Join ambitious brands scaling with Verto Media Global.</p>
+    <div class="ctabtns">
+      <button class="bp" onclick="openM()" style="padding:14px 30px" data-en="🚀 Start Your Campaign" data-es="🚀 Empieza Tu Campaña">🚀 Start Your Campaign</button>
+      <a href="https://wa.me/212691396908" target="_blank" class="bo" style="padding:14px 30px" data-en="💬 WhatsApp Us" data-es="💬 WhatsApp">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="ct">
+    <div class="ftg">
+      <div class="fb">
+        <img src="https://i.postimg.cc/brGySZqb/LOGO-NEW-one.png" alt="Verto Media Global">
+        <p data-en="International digital marketing agency. Casablanca, Morocco. Serving brands globally in 6 languages." data-es="Agencia internacional de marketing digital. Casablanca, Marruecos. Sirviendo marcas globalmente en 6 idiomas.">International digital marketing agency. Casablanca, Morocco. Serving brands globally in 6 languages.</p>
+        <div class="socs">
+          <a href="https://web.facebook.com/profile.php?id=100083970673105" class="soc" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.instagram.com/agen.cydigitalmarketingena" class="soc" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.linkedin.com/in/verto-media-global-aa79b4391/" class="soc" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://t.me/+212691396908" class="soc" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol"><h4 data-en="Services" data-es="Servicios">Services</h4><ul><li><a href="#services" data-en="Email Marketing" data-es="Email Marketing">Email Marketing</a></li><li><a href="#services" data-en="Digital Strategy" data-es="Estrategia Digital">Digital Strategy</a></li><li><a href="#services" data-en="SEO & Visibility" data-es="SEO y Visibilidad">SEO & Visibility</a></li><li><a href="#services" data-en="Social Media" data-es="Redes Sociales">Social Media</a></li><li><a href="#services" data-en="Paid Advertising" data-es="Publicidad de Pago">Paid Advertising</a></li></ul></div>
+      <div class="fcol"><h4 data-en="Company" data-es="Empresa">Company</h4><ul><li><a href="#about" data-en="About Us" data-es="Nosotros">About Us</a></li><li><a href="#process" data-en="Our Process" data-es="Nuestro Proceso">Our Process</a></li><li><a href="#pricing" data-en="Pricing" data-es="Precios">Pricing</a></li><li><a href="#industries" data-en="Industries" data-es="Industrias">Industries</a></li><li><a href="#faq" data-en="FAQ" data-es="FAQ">FAQ</a></li></ul></div>
+      <div class="fcol"><h4 data-en="Contact" data-es="Contacto">Contact</h4><ul><li><a href="mailto:vertomediaglobal@gmail.com">vertomediaglobal@gmail.com</a></li><li><a href="https://wa.me/212691396908" target="_blank">+212 691-396908</a></li><li><a href="#" data-en="Casablanca, Morocco" data-es="Casablanca, Marruecos">Casablanca, Morocco</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <p data-en="© 2025 Verto Media Global. All rights reserved." data-es="© 2025 Verto Media Global. Todos los derechos reservados.">© 2025 Verto Media Global. All rights reserved.</p>
+      <p>EN · ES · FR · DE · IT · AR</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WA FLOAT ── -->
+<a href="https://wa.me/212691396908" class="wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<!-- ── MODAL ── -->
+<div class="mbg" id="mbg" onclick="cOut(event)">
+  <div class="mb">
+    <button class="mx" onclick="closeM()">✕</button>
+    <h3 data-en="Let's work together" data-es="Trabajemos juntos">Let's work together</h3>
+    <p class="msub" data-en="Choose your preferred contact method" data-es="Elige tu método de contacto preferido">Choose your preferred contact method</p>
+    <div class="mts">
+      <button class="mt on" onclick="tab('wa')" id="twa"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</button>
+      <button class="mt" onclick="tab('em')" id="tem"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg> <span data-en="Email" data-es="Email">Email</span></button>
+    </div>
+    <div class="mp on" id="pwa">
+      <div class="fg2"><label data-en="Your Name" data-es="Tu Nombre">Your Name</label><input type="text" id="wn" placeholder="John Smith"></div>
+      <div class="fg2"><label data-en="Interested Service" data-es="Servicio de Interés">Interested Service</label><select id="ws"><option data-en="Select a service..." data-es="Selecciona...">Select a service...</option><option>Email Marketing</option><option data-en="Digital Strategy" data-es="Estrategia Digital">Digital Strategy</option><option data-en="Performance Analytics" data-es="Analítica">Performance Analytics</option><option data-en="Content Creation" data-es="Creación de Contenido">Content Creation</option><option data-en="SEO & Visibility" data-es="SEO y Visibilidad">SEO & Visibility</option><option data-en="Social Media Management" data-es="Gestión de Redes">Social Media Management</option><option data-en="Paid Advertising" data-es="Publicidad de Pago">Paid Advertising</option><option data-en="Branding & Identity" data-es="Branding">Branding & Identity</option><option data-en="Full Package" data-es="Paquete Completo">Full Package</option></select></div>
+      <div class="fg2"><label data-en="Your Message" data-es="Tu Mensaje">Your Message</label><textarea id="wm" placeholder="Tell us about your brand..."></textarea></div>
+      <button class="msend" onclick="sendWA()" data-en="📲 Send via WhatsApp" data-es="📲 Enviar por WhatsApp">📲 Send via WhatsApp</button>
+    </div>
+    <div class="mp" id="pem">
+      <div class="fg2"><label data-en="Your Name" data-es="Tu Nombre">Your Name</label><input type="text" id="en2"></div>
+      <div class="fg2"><label data-en="Your Email" data-es="Tu Email">Your Email</label><input type="email" id="ef"></div>
+      <div class="fg2"><label data-en="Interested Service" data-es="Servicio">Interested Service</label><select id="es2"><option>Select...</option><option>Email Marketing</option><option>Digital Strategy</option><option>Performance Analytics</option><option>Content Creation</option><option>SEO & Visibility</option><option>Social Media Management</option><option>Paid Advertising</option><option>Branding & Identity</option><option>Full Package</option></select></div>
+      <div class="fg2"><label data-en="Your Message" data-es="Tu Mensaje">Your Message</label><textarea id="em2" placeholder="Tell us about your brand..."></textarea></div>
+      <button class="msend" id="esub" onclick="sendEmail()" data-en="📧 Send Email" data-es="📧 Enviar Email">📧 Send Email</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─ 3D CANVAS ─────────────────────── */
+const CV=document.getElementById('bg'),CX=CV.getContext('2d');
+let W,H;
+const rz=()=>{W=CV.width=window.innerWidth;H=CV.height=window.innerHeight};
+rz();window.addEventListener('resize',rz);
+
+const PC=['rgba(139,92,246','rgba(56,189,248','rgba(167,139,250','rgba(244,114,182'];
+class Shape{
+  constructor(){this.reset(true)}
+  reset(init){
+    this.x=Math.random()*W;
+    this.y=init?Math.random()*H:H+80;
+    this.s=Math.random()*52+16;
+    this.vx=(Math.random()-.5)*.3;
+    this.vy=-(Math.random()*.4+.07);
+    this.vr=(Math.random()-.5)*.007;
+    this.rot=Math.random()*Math.PI*2;
+    this.a=Math.random()*.09+.025;
+    this.t=Math.floor(Math.random()*4);
+    this.ci=Math.floor(Math.random()*PC.length);
+  }
+  draw(){
+    CX.save();
+    CX.translate(this.x,this.y);
+    CX.rotate(this.rot);
+    CX.globalAlpha=this.a;
+    CX.strokeStyle=PC[this.ci]+',.85)';
+    CX.lineWidth=.75;
+    CX.shadowColor=PC[this.ci]+',.6)';
+    CX.shadowBlur=12;
+    const s=this.s*.5;
+    CX.beginPath();
+    if(this.t===0){/* cube */
+      const d=s*.36;
+      CX.rect(-s,-s,s*2,s*2);CX.stroke();
+      CX.beginPath();CX.rect(-s+d,-s-d,s*2,s*2);CX.stroke();
+      CX.beginPath();
+      CX.moveTo(-s,-s);CX.lineTo(-s+d,-s-d);
+      CX.moveTo(s,-s);CX.lineTo(s+d,-s-d);
+      CX.moveTo(s,s);CX.lineTo(s+d,s-d);
+      CX.moveTo(-s,s);CX.lineTo(-s+d,s-d);
+      CX.stroke();
+    }else if(this.t===1){/* diamond */
+      CX.moveTo(0,-s);CX.lineTo(s*.62,0);CX.lineTo(0,s);CX.lineTo(-s*.62,0);CX.closePath();CX.stroke();
+    }else if(this.t===2){/* hex */
+      for(let i=0;i<6;i++){const a=Math.PI/3*i;i?CX.lineTo(s*Math.cos(a),s*Math.sin(a)):CX.moveTo(s*Math.cos(a),s*Math.sin(a))}
+      CX.closePath();CX.stroke();
+    }else{/* tri */
+      CX.moveTo(0,-s);CX.lineTo(s*.82,s*.58);CX.lineTo(-s*.82,s*.58);CX.closePath();CX.stroke();
+    }
+    CX.restore();
+  }
+  tick(){this.x+=this.vx;this.y+=this.vy;this.rot+=this.vr;if(this.y<-100)this.reset(false)}
+}
+const SH=Array.from({length:22},()=>new Shape());
+
+/* mouse glow */
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+document.addEventListener('touchmove',e=>{const t=e.touches[0];mx=t.clientX;my=t.clientY},{passive:true});
+
+function frame(){
+  CX.clearRect(0,0,W,H);
+  /* ambient glows */
+  const g1=CX.createRadialGradient(W*.18,H*.22,0,W*.18,H*.22,W*.3);
+  g1.addColorStop(0,'rgba(139,92,246,.09)');g1.addColorStop(1,'transparent');
+  CX.fillStyle=g1;CX.fillRect(0,0,W,H);
+  const g2=CX.createRadialGradient(W*.82,H*.72,0,W*.82,H*.72,W*.24);
+  g2.addColorStop(0,'rgba(56,189,248,.06)');g2.addColorStop(1,'transparent');
+  CX.fillStyle=g2;CX.fillRect(0,0,W,H);
+  /* mouse glow */
+  if(mx||my){
+    const gm=CX.createRadialGradient(mx,my,0,mx,my,160);
+    gm.addColorStop(0,'rgba(139,92,246,.05)');gm.addColorStop(1,'transparent');
+    CX.fillStyle=gm;CX.fillRect(0,0,W,H);
+  }
+  SH.forEach(s=>{s.tick();s.draw()});
+  requestAnimationFrame(frame);
+}
+frame();
+
+/* ─ LANGUAGE ─────────────────────── */
+function L(l){
+  localStorage.setItem('vl',l);
+  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.lb').forEach(b=>{if(b.textContent.trim().toLowerCase()===l)b.classList.add('on')});
+  document.querySelectorAll('[data-en]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v)el.innerHTML=v});
+}
+L(localStorage.getItem('vl')||'en');
+
+/* ─ MOBILE MENU ──────────────────── */
+function mob(){
+  document.getElementById('mobmenu').classList.toggle('o');
+  document.getElementById('hbg').classList.toggle('o');
+}
+
+/* ─ MODAL ────────────────────────── */
+function openM(){document.getElementById('mbg').classList.add('open');document.body.style.overflow='hidden'}
+function closeM(){document.getElementById('mbg').classList.remove('open');document.body.style.overflow=''}
+function cOut(e){if(e.target===document.getElementById('mbg'))closeM()}
+function tab(t){
+  document.querySelectorAll('.mt').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.mp').forEach(p=>p.classList.remove('on'));
+  document.getElementById('t'+t).classList.add('on');
+  document.getElementById('p'+t).classList.add('on');
+}
+
+/* ─ WHATSAPP ─────────────────────── */
+function sendWA(){
+  const n=document.getElementById('wn').value||'a potential client';
+  const s=document.getElementById('ws').value;
+  const m=document.getElementById('wm').value;
+  const noSvc=s.includes('Select')||s.includes('Selecciona');
+  const txt=encodeURIComponent('Hello Verto Media Global! 👋\n\nMy name is '+n+'.\n'+(noSvc?'':('Interested in: '+s+'\n'))+(m?'\nMessage: '+m:''));
+  window.open('https://wa.me/212617499697?text='+txt,'_blank');
+  closeM();
+}
+
+/* ─ EMAIL (Web3Forms) ────────────── */
+async function sendEmail(){
+  const n=document.getElementById('en2').value;
+  const f=document.getElementById('ef').value;
+  const s=document.getElementById('es2').value;
+  const m=document.getElementById('em2').value;
+  const btn=document.getElementById('esub');
+  if(!n||!f||!m){btn.textContent='⚠️ Fill all fields';setTimeout(()=>{btn.textContent='📧 Send Email'},2e3);return}
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    const fd=new FormData();
+    fd.append('access_key','875dfd7d-22eb-4f9a-8222-e5527180955b');
+    fd.append('name',n);
+    fd.append('email',f);
+    fd.append('subject','Verto Media — New inquiry from '+n);
+    fd.append('service',s);
+    fd.append('message',m);
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
+    const data=await r.json();
+    if(data.success){
+      btn.textContent='✅ Sent!';btn.style.background='#22c55e';
+      setTimeout(()=>{closeM();btn.textContent='📧 Send Email';btn.style.background='';btn.disabled=false},2e3);
+    }else throw 0;
+  }catch{
+    btn.textContent='❌ Error — try WhatsApp';btn.style.background='#ef4444';
+    setTimeout(()=>{btn.textContent='📧 Send Email';btn.style.background='';btn.disabled=false},3e3);
+  }
+}
+
+/* ─ SCROLL REVEAL ────────────────── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})
+},{threshold:0,rootMargin:'0px 0px 0px 0px'});
+document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>obs.observe(el));
+/* force visible anything already in viewport */
+setTimeout(()=>{
+  document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight)el.classList.add('in');
+  });
+},100);
+
+/* ─ COUNTERS ─────────────────────── */
+function cnt(el,target){
+  const d=1600,s=performance.now();
+  const run=now=>{
+    const p=Math.min((now-s)/d,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent='+'+Math.floor(e*target);
+    if(p<1)requestAnimationFrame(run);
+    else el.textContent='+'+target;
+  };
+  requestAnimationFrame(run);
+}
+const cobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&e.target.dataset.count){
+      cnt(e.target,+e.target.dataset.count);
+      cobs.unobserve(e.target);
+    }
+  })
+},{threshold:.4});
+document.querySelectorAll('[data-count]').forEach(el=>cobs.observe(el));
+
+/* ─ FAQ ──────────────────────────── */
+function faq(btn){
+  const item=btn.closest('.fi');
+  const open=item.classList.contains('on');
+  document.querySelectorAll('.fi').forEach(i=>i.classList.remove('on'));
+  if(!open)item.classList.add('on');
+}
+
+/* ─ ESC ──────────────────────────── */
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+</script>
+</body>
+</html>
